@@ -8,7 +8,6 @@
 include_once "Db.php";
 include_once "Config/Config.php";
 include_once "Config/DbConfig.php";
-
 /**
  * Class Run
  * 应用程序引导类
