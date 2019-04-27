@@ -14,7 +14,7 @@ class DbConfig{
     public static function getConfig()
     {
         $Dbconfig = [
-            "Db_HOST" => "",
+            "Db_HOST" => "111",
             "Db_USER" => "",
             "Db_PASS" => "",
             "Db_NAME" => "",
