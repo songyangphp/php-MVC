@@ -1,2 +1,4 @@
 .idea/
 test.php
+Config/DbConfig.php
+Config/Config.php
