@@ -28,7 +28,7 @@ class Db
         }
 
         if(!$db_host || !$db_user || !$db_pass || !$db_name){
-            exit("Model init Error");
+            exit("Db init Error");
         }
 
         $this->db_host = $db_host;

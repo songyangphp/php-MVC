@@ -38,13 +38,14 @@ class Run
      */
     public function initController()
     {
-        $controller = $_GET[self::$config['Web']['Controller_Name']];
-        $function = $_GET[self::$config['Web']['Function_Name']];
+        $controller = $_GET[self::$config['Web']['Controller_Name']] ? $_GET[self::$config['Web']['Controller_Name']] : self::$config['Web']['Controller_Def'];
+        $function = $_GET[self::$config['Web']['Function_Name']] ? $_GET[self::$config['Web']['Function_Name']] : self::$config['Web']['Function_Def'];
         $this->controller = $controller;
         $this->function = $function;
 
         $controller_root = self::CONTROLLER_ROOT.$this->controller.self::CONTROLLER_EXT.".php";
         if(file_exists($controller_root)){
+            var_dump($controller_root);
             include_once $controller_root;
             return $this;
         }else{
@@ -60,9 +61,9 @@ class Run
      * @param $db_name
      * @return $this
      */
-    public function initModel($db_host,$db_user,$db_pass,$db_name)
+    public function initModel()
     {
-        new Db(self::$config['Db_HOST'],self::$config['Db_USER'],self::$config['Db_PASS'],self::$config['Db_NAME']);
+        new Db(self::$db_config['Db_HOST'],self::$db_config['Db_USER'],self::$db_config['Db_PASS'],self::$db_config['Db_NAME']);
         return $this;
     }
 
