@@ -75,13 +75,4 @@ class Run
         $controller_obj = new $path();
         return $controller_obj->{$this->function}();
     }
-
-    /**
-     * 关闭数据库连接
-     */
-    public function __destruct()
-    {
-        $db = new Db();
-        if($db) $db->close();
-    }
 }

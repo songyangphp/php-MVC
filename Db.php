@@ -70,8 +70,16 @@ class Db
         }
     }
 
+    /**
+     * 关闭数据库
+     */
     public function close()
     {
         self::$pdo = null;
+    }
+
+    public function __destruct()
+    {
+        $this->close();
     }
 }

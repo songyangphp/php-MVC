@@ -11,17 +11,15 @@ include_once "Model/IndexModel.php";
 
 class IndexController extends Controller
 {
-    private static $model;
 
     public function __construct()
     {
         parent::__construct();
-        self::$model = (new IndexModel());
     }
 
     public function index()
     {
-        /*var_dump(self::$model->getList());*/
+        /*var_dump((new IndexModel())->getRow());*/
         $this->display();
     }
 }
