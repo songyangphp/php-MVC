@@ -31,8 +31,6 @@ class Run
 
     /**
      * 初始化 控制器
-     * @param $controller
-     * @param $function
      * @return $this
      */
     public function initController()
@@ -53,10 +51,6 @@ class Run
 
     /**
      * 初始化 数据库
-     * @param $db_host
-     * @param $db_user
-     * @param $db_pass
-     * @param $db_name
      * @return $this
      */
     public function initModel()
