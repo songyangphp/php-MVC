@@ -6,6 +6,8 @@
  * Time: 10:46
  */
 include_once "Db.php";
+include_once "Config/Config.php";
+include_once "Config/DbConfig.php";
 
 /**
  * Class Run
@@ -19,16 +21,27 @@ class Run
     private $controller;
     private $function;
 
+    private static $config;
+    private static $db_config;
+
+    public function __construct()
+    {
+        self::$config = Config::getConfig();
+        self::$db_config = DbConfig::getConfig();
+    }
+
     /**
      * 初始化 控制器
      * @param $controller
      * @param $function
      * @return $this
      */
-    public function initController($controller, $function)
+    public function initController()
     {
-        $this->controller = $controller ? $controller : "Index";
-        $this->function = $function ? $function : "index";
+        $controller = $_GET[self::$config['Web']['Controller_Name']];
+        $function = $_GET[self::$config['Web']['Function_Name']];
+        $this->controller = $controller;
+        $this->function = $function;
 
         $controller_root = self::CONTROLLER_ROOT.$this->controller.self::CONTROLLER_EXT.".php";
         if(file_exists($controller_root)){
@@ -49,7 +62,7 @@ class Run
      */
     public function initModel($db_host,$db_user,$db_pass,$db_name)
     {
-        new Db($db_host,$db_user,$db_pass,$db_name);
+        new Db(self::$config['Db_HOST'],self::$config['Db_USER'],self::$config['Db_PASS'],self::$config['Db_NAME']);
         return $this;
     }
 

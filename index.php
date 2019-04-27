@@ -15,12 +15,9 @@ ini_set('display_errors', 'On');
 
 include_once "Run.php";
 
-$controller = $_GET['c'];
-$function = $_GET['f'];
-
 $db_host = "127.0.0.1";
 $db_user = "root";
 $db_pass = "123456";
 $db_name = "qyjg";
 
-(new Run())->initController($controller,$function)->initModel($db_host,$db_user,$db_pass,$db_name)->appRun();
+(new Run())->initController()->initModel($db_host,$db_user,$db_pass,$db_name)->appRun();
