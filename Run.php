@@ -44,7 +44,6 @@ class Run
 
         $controller_root = self::CONTROLLER_ROOT.$this->controller.self::CONTROLLER_EXT.".php";
         if(file_exists($controller_root)){
-            var_dump($controller_root);
             include_once $controller_root;
             return $this;
         }else{
