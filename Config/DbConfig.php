@@ -14,10 +14,10 @@ class DbConfig{
     public static function getConfig()
     {
         $Dbconfig = [
-            "Db_HOST" => "127.0.0.1",
-            "Db_USER" => "root",
-            "Db_PASS" => "123456",
-            "Db_NAME" => "song",
+            "Db_HOST" => "",
+            "Db_USER" => "",
+            "Db_PASS" => "",
+            "Db_NAME" => "",
         ];
 
         return $Dbconfig;
