@@ -27,6 +27,7 @@ class Run
     {
         self::$config = Config::getConfig();
         self::$db_config = DbConfig::getConfig();
+        date_default_timezone_set(self::$config['Web']['TimeZone']);
     }
 
     /**
