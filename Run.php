@@ -14,11 +14,11 @@ include_once "Config/DbConfig.php";
  */
 class Run
 {
-    const CONTROLLER_EXT = "Controller";
-    const CONTROLLER_ROOT = self::CONTROLLER_EXT."/";
-
     private $controller;
     private $function;
+
+    private $controller_ext;
+    private $controller_root;
 
     private static $config;
     private static $db_config;
@@ -27,6 +27,8 @@ class Run
     {
         self::$config = Config::getConfig();
         self::$db_config = DbConfig::getConfig();
+        $this->controller_ext = self::$config['Web']['Controller_Root'];
+        $this->controller_root = $this->controller_ext."/";
         date_default_timezone_set(self::$config['Web']['TimeZone']);
     }
 
@@ -41,7 +43,7 @@ class Run
         $this->controller = $controller;
         $this->function = $function;
 
-        $controller_root = self::CONTROLLER_ROOT.$this->controller.self::CONTROLLER_EXT.".php";
+        $controller_root = $this->controller_root.$this->controller.$this->controller_ext.".php";
         if(file_exists($controller_root)){
             include_once $controller_root;
             return $this;
@@ -66,7 +68,7 @@ class Run
      */
     public function appRun()
     {
-        $path = $this->controller.self::CONTROLLER_EXT;
+        $path = $this->controller.$this->controller_ext;
         $controller_obj = new $path();
         return $controller_obj->{$this->function}();
     }
