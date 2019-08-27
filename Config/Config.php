@@ -20,6 +20,7 @@ class Config{
                 "TimeZone" => "PRC", //默认时区 （中华人民共和国 东八区）
                 "Controller_Name" => "c", //默认控制器url参数名
                 "Function_Name" => "f", //默认方法url参数名
+                "Debug" => "true", //开发阶段建议开启
             ]
 
         ];

@@ -29,7 +29,6 @@ class Run
         self::$db_config = DbConfig::getConfig();
         $this->controller_ext = self::$config['Web']['Controller_Root'];
         $this->controller_root = $this->controller_ext."/";
-        date_default_timezone_set(self::$config['Web']['TimeZone']);
     }
 
     /**
@@ -59,6 +58,21 @@ class Run
     public function initModel()
     {
         new Db(self::$db_config['Db_HOST'],self::$db_config['Db_USER'],self::$db_config['Db_PASS'],self::$db_config['Db_NAME']);
+        return $this;
+    }
+
+    /**
+     * 初始化 应用程式
+     * @return $this
+     */
+    public function initApp()
+    {
+        date_default_timezone_set(self::$config['Web']['TimeZone']);
+        if(self::$config['Web']['Debug'] === 'true'){
+            ini_set('display_errors', 'On');
+        }else{
+            ini_set('display_errors', 'Off');
+        }
         return $this;
     }
 
