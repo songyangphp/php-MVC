@@ -54,7 +54,7 @@ class Model
             $sql = "INSERT INTO `{$this->table_name}` ({$key}) VALUES ({$value})";
             return self::$db->exec($sql);
         }else{
-            exit("\$data don it array");
+            exit("\$data is not an array");
         }
     }
 }
