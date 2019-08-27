@@ -20,10 +20,10 @@ class Run
     private $controller_ext;
     private $controller_root;
 
-    public static $db_instance;
-
     private static $config;
     private static $db_config;
+
+    public static $db_instance;
 
     public function __construct()
     {
@@ -39,8 +39,8 @@ class Run
      */
     public function initController()
     {
-        $controller = $_GET[self::$config['Web']['Controller_Name']] ? $_GET[self::$config['Web']['Controller_Name']] : self::$config['Web']['Controller_Def'];
-        $function = $_GET[self::$config['Web']['Function_Name']] ? $_GET[self::$config['Web']['Function_Name']] : self::$config['Web']['Function_Def'];
+        $controller = trim($_GET[self::$config['Web']['Controller_Name']]) ? trim($_GET[self::$config['Web']['Controller_Name']]) : self::$config['Web']['Controller_Def'];
+        $function = trim($_GET[self::$config['Web']['Function_Name']]) ? trim($_GET[self::$config['Web']['Function_Name']]) : self::$config['Web']['Function_Def'];
         $this->controller = $controller;
         $this->function = $function;
 

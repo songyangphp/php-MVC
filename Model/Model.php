@@ -44,8 +44,8 @@ class Model
             $key = '';
             $value = '';
             foreach ($data as $k => $v){
-                $key .= $k . ",";
-                $value .= "'".$v."'" . ',';
+                $key .= trim($k) . ",";
+                $value .= "'".trim($v)."'" . ',';
             }
 
             $key = rtrim($key,',');
