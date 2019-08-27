@@ -33,6 +33,11 @@ class Model
         return self::$db->query($sql);
     }
 
+    /**
+     * 插入数据
+     * @param array $data
+     * @return mixed
+     */
     protected function insertData($data = [])
     {
         if(is_array($data)){
