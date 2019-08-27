@@ -70,7 +70,7 @@ class Run
     public function initApp()
     {
         date_default_timezone_set(self::$config['Web']['TimeZone']);
-        if(self::$config['Web']['Debug'] === 'true'){
+        if(self::$config['Web']['Debug'] == 'true'){
             ini_set('display_errors', 'On');
         }else{
             ini_set('display_errors', 'Off');
