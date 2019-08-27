@@ -14,8 +14,8 @@ include_once "Config/DbConfig.php";
  */
 class Run
 {
-    const CONTROLLER_ROOT = "Controller/";
     const CONTROLLER_EXT = "Controller";
+    const CONTROLLER_ROOT = self::CONTROLLER_EXT."/";
 
     private $controller;
     private $function;
