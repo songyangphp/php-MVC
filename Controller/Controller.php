@@ -8,7 +8,7 @@
 
 class Controller
 {
-    private $_view_root = "View\\";
+    private $_view_root = "View/";
 
     private $controller;
     private $function;
@@ -27,16 +27,16 @@ class Controller
     {
         $view = $this->_view_root;
         if(!$tmp_file){
-            $view .= $this->controller."\\".$this->function;
+            $view .= $this->controller."/".$this->function;
         }else{
             if(strpos($tmp_file,'/') !== false){
                 $array = explode('/',$tmp_file);
                 $controller = $array[0];
                 $function = $array[1];
 
-                $view .= $controller."\\".$function;
+                $view .= $controller."/".$function;
             }else{
-                $view .= $this->controller."\\".$tmp_file;
+                $view .= $this->controller."/".$tmp_file;
             }
         }
 
