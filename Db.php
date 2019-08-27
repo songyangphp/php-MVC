@@ -50,21 +50,52 @@ class Db
      */
     public function query($sql)
     {
-        if(!$sql){
-            exit("Sql is Null");
-        }
+        if(empty($sql)) exit('Sql is null');
+
         try{
             $sth = self::$pdo->prepare($sql);
             $sth->execute();
             $result = $sth->fetchAll();
-            foreach ($result as $k => $v){
-                foreach ($v as $key => $value){
-                    if(is_int($key)){
-                        unset($result[$k][$key]);
+
+            if($result){
+                foreach ($result as $k => $v){
+                    foreach ($v as $key => $value){
+                        if(is_int($key)){
+                            unset($result[$k][$key]);
+                        }
                     }
                 }
+
+                return $result;
+            }else{
+                exit("Db error : ".$sql);
             }
-            return $result;
+        }catch (Exception $exception){
+            exit($exception->getMessage());
+        }
+    }
+
+    /**
+     * 执行SQL语句
+     * @param $sql
+     * @return int
+     */
+    public function exec($sql)
+    {
+        if(empty($sql)) exit('Sql is null');
+
+        try{
+            $res = (self::$pdo)->exec($sql);
+
+            if($res){
+                if(strstr($sql,'INSERT')){
+                    return (self::$pdo)->lastInsertId();
+                }else{
+                    return $res;
+                }
+            }else{
+                exit("Db error : ".$sql);
+            }
         }catch (Exception $exception){
             exit($exception->getMessage());
         }

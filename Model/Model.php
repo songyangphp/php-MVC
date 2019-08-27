@@ -29,7 +29,27 @@ class Model
      */
     protected function getList()
     {
-        $sql = "SELECT * FROM `".$this->table_name."`";
+        $sql = "SELECT * FROM `{$this->table_name}`";
         return self::$db->query($sql);
+    }
+
+    protected function insertData($data = [])
+    {
+        if(is_array($data)){
+            $key = '';
+            $value = '';
+            foreach ($data as $k => $v){
+                $key .= $k . ",";
+                $value .= "'".$v."'" . ',';
+            }
+
+            $key = rtrim($key,',');
+            $value = rtrim($value,',');
+
+            $sql = "INSERT INTO `{$this->table_name}` ({$key}) VALUES ({$value})";
+            return self::$db->exec($sql);
+        }else{
+            exit("\$data don it array");
+        }
     }
 }

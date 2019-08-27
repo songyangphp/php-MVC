@@ -19,6 +19,8 @@ class IndexController extends Controller
 
     public function index()
     {
+        /*$last_id = (new IndexModel())->insert(['u_name' => "王龙" , 'u_tel' => '15832192235']);
+        var_dump($last_id);*/
         var_dump((new IndexModel())->getRow());
         $this->display();
     }

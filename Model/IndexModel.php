@@ -14,4 +14,9 @@ class IndexModel extends Model
     {
         return $this->getList();
     }
+
+    public function insert($data = [])
+    {
+        return $this->insertData($data);
+    }
 }
