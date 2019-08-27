@@ -19,7 +19,7 @@ class IndexController extends Controller
 
     public function index()
     {
-        /*var_dump((new IndexModel())->getRow());*/
+        var_dump((new IndexModel())->getRow());
         $this->display();
     }
 }

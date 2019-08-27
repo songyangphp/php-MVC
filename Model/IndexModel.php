@@ -8,10 +8,10 @@
 include_once "Model.php";
 class IndexModel extends Model
 {
-    protected $table_name = "qy_company";
+    protected $table_name = "s_user";
 
     public function getRow()
     {
-        return (new Model())->getList();
+        return $this->getList();
     }
 }

@@ -20,6 +20,8 @@ class Run
     private $controller_ext;
     private $controller_root;
 
+    public static $db_instance;
+
     private static $config;
     private static $db_config;
 
@@ -57,7 +59,7 @@ class Run
      */
     public function initModel()
     {
-        new Db(self::$db_config['Db_HOST'],self::$db_config['Db_USER'],self::$db_config['Db_PASS'],self::$db_config['Db_NAME']);
+        self::$db_instance = new Db(self::$db_config['Db_HOST'],self::$db_config['Db_USER'],self::$db_config['Db_PASS'],self::$db_config['Db_NAME']);
         return $this;
     }
 

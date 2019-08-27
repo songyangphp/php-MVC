@@ -7,6 +7,7 @@
  */
 
 include_once "Db.php";
+include_once "Run.php";
 
 /**
  * 模型类
@@ -19,7 +20,7 @@ class Model
 
     public function __construct()
     {
-        self::$db = (new Db());
+        self::$db = Run::$db_instance;
     }
 
     /**
