@@ -102,6 +102,33 @@ class Db
     }
 
     /**
+     * 事务开启
+     * @return bool
+     */
+    public function startTrans()
+    {
+        return (self::$pdo)->beginTransaction();
+    }
+
+    /**
+     * 事务执行
+     * @return bool
+     */
+    public function commit()
+    {
+        return (self::$pdo)->commit();
+    }
+
+    /**
+     * 事务回滚
+     * @return bool
+     */
+    public function rollback()
+    {
+        return (self::$pdo)->rollBack();
+    }
+
+    /**
      * 关闭数据库
      */
     public function close()
