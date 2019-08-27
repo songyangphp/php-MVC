@@ -20,8 +20,8 @@ class Run
     private $controller_ext;
     private $controller_root;
 
-    private static $config;
-    private static $db_config;
+    public static $config;
+    public static $db_config;
 
     public static $db_instance;
 

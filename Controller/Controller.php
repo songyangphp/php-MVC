@@ -8,7 +8,7 @@
 
 class Controller
 {
-    private $_view_root = "View/";
+    private $_view_root;
 
     private $controller;
     private $function;
@@ -17,6 +17,7 @@ class Controller
     {
         $this->controller = $_GET['c'] ? $_GET['c'] : "Index";
         $this->function = $_GET['f'] ? $_GET['f'] : "index";
+        $this->_view_root = Run::$config['Web']['View_Root']."/";
     }
 
     /**
