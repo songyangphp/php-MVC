@@ -14,6 +14,7 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 
 include_once "Run.php";
+ini_set('display_errors', 'On');
 
 function loopArrayWriteFile($array, $file, $no = 0)
 {
@@ -34,4 +35,4 @@ function loopArrayWriteFile($array, $file, $no = 0)
     }
 }
 
-(new Run())->initController()->initModel()->appRun();
+(new Run())->initApp()->initController()->initModel()->appRun();
