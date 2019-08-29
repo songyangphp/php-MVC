@@ -27,6 +27,7 @@ class Controller
     /**
      * 加载模板
      * @param string $tmp_file
+     * @return mixed
      */
     protected function display($tmp_file = '')
     {
