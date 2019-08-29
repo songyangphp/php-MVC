@@ -13,4 +13,4 @@ error_reporting(E_ALL ^ E_NOTICE);
 
 include_once "Run.php";
 
-(new Run())->initApp()->initController()->initModel()->appRun();
+(new Run())->appRun();

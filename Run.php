@@ -37,7 +37,7 @@ class Run
      * 初始化 控制器
      * @return $this
      */
-    public function initController()
+    private function initController()
     {
         $controller = trim($_GET[self::$config['Web']['Controller_Name']]) ? trim($_GET[self::$config['Web']['Controller_Name']]) : self::$config['Web']['Controller_Def'];
         $function = trim($_GET[self::$config['Web']['Function_Name']]) ? trim($_GET[self::$config['Web']['Function_Name']]) : self::$config['Web']['Function_Def'];
@@ -57,7 +57,7 @@ class Run
      * 初始化 数据库
      * @return $this
      */
-    public function initModel()
+    private function initDb()
     {
         self::$db_instance = new Db(self::$db_config['Db_HOST'],self::$db_config['Db_USER'],self::$db_config['Db_PASS'],self::$db_config['Db_NAME']);
         return $this;
@@ -67,7 +67,7 @@ class Run
      * 初始化 应用程式
      * @return $this
      */
-    public function initApp()
+    private function initApp()
     {
         date_default_timezone_set(self::$config['Web']['TimeZone']);
         if(self::$config['Web']['Debug'] == 'true'){
@@ -75,6 +75,10 @@ class Run
         }else{
             ini_set('display_errors', 'Off');
         }
+
+        $this->initDb();
+        $this->initController();
+
         return $this;
     }
 
@@ -84,6 +88,7 @@ class Run
      */
     public function appRun()
     {
+        $this->initApp();
         $path = $this->controller.$this->controller_ext;
         $controller_obj = new $path();
         return $controller_obj->{$this->function}();
