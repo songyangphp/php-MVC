@@ -18,6 +18,10 @@ class Controller
         $this->controller = $_GET['c'] ? $_GET['c'] : "Index";
         $this->function = $_GET['f'] ? $_GET['f'] : "index";
         $this->_view_root = Run::$config['Web']['View_Root']."/";
+
+        //定义 魔术方法
+        define("_CONTROLLER_",$this->controller);
+        define("_FUNCTION_",$this->function);
     }
 
     /**
