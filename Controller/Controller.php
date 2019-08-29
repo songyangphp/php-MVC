@@ -47,7 +47,7 @@ class Controller
 
         $view .= ".html";
         if(file_exists($view)){
-            include_once $view;
+            return include_once $view;
         }else{
             exit($tmp_file. " View not fund");
         }
