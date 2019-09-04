@@ -30,7 +30,7 @@ class Run
         self::$config = Config::getConfig();
         self::$db_config = DbConfig::getConfig();
         $this->controller_ext = self::$config['Web']['Controller_Root'];
-        $this->controller_root = $this->controller_ext."/";
+        $this->controller_root = $this->controller_ext.DIRECTORY_SEPARATOR;
     }
 
     /**
